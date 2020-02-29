@@ -11,7 +11,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   final MaterialColor colorCustom = MaterialColor(0xFF0158B7, color);
 
   @override
@@ -22,8 +21,10 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.green,
         ),
-        home: LoginPage(),
-        
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => LoginPage(),
+        },
       ),
     );
   }
