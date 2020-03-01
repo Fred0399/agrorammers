@@ -19,11 +19,13 @@ class Forum {
 
 class Comment {
   int commentID;
-  int commentUserID;
+  String commentUserProfIMg;
   String commentBody;
+  String commentUserName;
   Comment({
     @required this.commentID,
-    @required this.commentUserID,
+    this.commentUserProfIMg,
     this.commentBody,
+    this.commentUserName,
   });
 }
