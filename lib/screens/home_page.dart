@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../blocs/login_provider.dart';
 import '../others/drawer.dart';
+import 'forum_home.dart';
 import 'home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -66,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               IconButton(
                 iconSize: 30.0,
                 padding: EdgeInsets.only(right: 28.0),
-                icon: Icon(Icons.search),
+                icon: Icon(Icons.forum),
                 color: (widget.choosedind == 1) ? Colors.green : null,
                 onPressed: () {
                   setState(() {
@@ -110,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
       body: PageView(
         controller: _myPage,
         onPageChanged: (int) {
-          print('Page Changes to index $int');
+          // print('Page Changes to index $int');
         },
         children: <Widget>[
           (widget.list != null && widget.list.length > 0)
@@ -125,11 +126,13 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text("Bitki əlavə edilməyib!"),
                   ),
                 ),
-          Center(
-            child: Container(
-              child: Text('Empty Body 1'),
-            ),
-          ),
+          (widget.loggedUser != null)
+              ? ForumHome(widget.loggedUser)
+              : Center(
+                  child: Container(
+                    child: Text('Forumlara baxmaq üçün hesaba daxil olun!'),
+                  ),
+                ),
           Center(
             child: Container(
               child: Text('Empty Body 2'),
