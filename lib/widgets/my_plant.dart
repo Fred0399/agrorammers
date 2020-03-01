@@ -38,12 +38,11 @@ class _MyPlantState extends State<MyPlant> {
                   child: Center(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset("assets/catalog_items/tomato.png"),
+                      child: widget.plantData.image,
                     ),
                   ),
                 ),
                 SizedBox(width: 10,),
-                
               ],
             ),
           ),
