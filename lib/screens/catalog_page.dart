@@ -10,7 +10,7 @@ class CatalogPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Məlumat'),
       ),
-      backgroundColor: Colors.green,
+      //backgroundColor: Colors.green,
       body: ListView(
         children:
             catalogPlants.map((title) => CatalogItem(title: title)).toList(),

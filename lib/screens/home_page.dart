@@ -12,7 +12,7 @@ class LoginPage extends StatefulWidget {
     PlantData(
       id: 123123,
       title: "Pomidor",
-      image: Image.asset('assets/catalog_items/tomato.png'),
+      image: Image.asset('assets/catalog_items/Pomidor.png'),
       tasks: [
         TaskCare(isDone: 0, note: "5 gunden 1 sula"),
       ],
@@ -20,7 +20,7 @@ class LoginPage extends StatefulWidget {
     PlantData(
       id: 123123,
       title: "Pomidor",
-      image: Image.asset('assets/catalog_items/tomato.png'),
+      image: Image.asset('assets/catalog_items/Pomidor.png'),
       tasks: [
         TaskCare(isDone: 0, note: "5 gunden 1 sula"),
       ],

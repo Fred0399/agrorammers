@@ -15,7 +15,7 @@ class CatalogDiseasesListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(plantName),
       ),
-      backgroundColor: Colors.green,
+      //backgroundColor: Colors.green,
       body: ListView(
         children: diseasesList
             .map(

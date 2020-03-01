@@ -41,24 +41,24 @@ class CatalogItem extends StatelessWidget {
         onTap: () => select(context),
         splashColor: Colors.red,
         borderRadius: BorderRadius.all(
-          Radius.circular(30),
+          Radius.circular(10),
         ),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(
-              Radius.circular(30),
+              Radius.circular(10),
             ),
             color: Colors.yellowAccent.withOpacity(0.7),
           ),
           height: MediaQuery.of(context).size.height * 0.2,
           child: Padding(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 LimitedBox(
-                  maxWidth: MediaQuery.of(context).size.width * 0.5,
+                  maxWidth: MediaQuery.of(context).size.width * 0.4,
                   child: Text(
                     title,
                     style: TextStyle(
@@ -68,10 +68,17 @@ class CatalogItem extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Image(
-                    image: AssetImage(imagePath),
-                    fit: BoxFit.fitWidth,
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: LimitedBox(
+                      maxWidth: MediaQuery.of(context).size.width * 0.40,
+                      child: Image(
+                        // height: 110,
+                        image: AssetImage(imagePath),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
                 ),
               ],

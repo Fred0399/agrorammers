@@ -19,20 +19,27 @@ class CatalogDiseaseInfoPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Image(
-                  image: AssetImage(
-                      'assets/' + diseaseParent + '/' + diseaseName + '.jpg'),
-                  fit: BoxFit.fitWidth,
-                ),
+              Image(
+                image: AssetImage(
+                    'assets/' + diseaseParent + '/' + diseaseName + '.jpg'),
+                fit: BoxFit.fitWidth,
               ),
               Container(
                 width: double.infinity,
                 child: Card(
-                  child: Text(
-                    diseasesInformation[diseaseName],
-                    textAlign: TextAlign.start,
+                  margin: EdgeInsets.all(10),
+                  color: Colors.yellowAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: Text(
+                      diseasesInformation[diseaseName],
+                      textAlign: TextAlign.start,
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
               )
