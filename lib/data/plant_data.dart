@@ -2,9 +2,9 @@
 class PlantData{
   final int id;
   final String title;
-  final String image_url;
+  final String imageUrl;
   final List<TaskCare> tasks;
-  PlantData({this.id,this.title,this.image_url,this.tasks});
+  PlantData({this.id,this.title,this.imageUrl,this.tasks});
 }
 
 class TaskCare{

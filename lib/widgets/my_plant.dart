@@ -13,12 +13,10 @@ class MyPlant extends StatefulWidget {
 }
 
 class _MyPlantState extends State<MyPlant> {
-
-  int get tasksDone{
-    int count=0;
+  int get tasksDone {
+    int count = 0;
     for (TaskCare item in widget.plantData.tasks) {
-      if(item.isDone==1)
-        count++;
+      if (item.isDone == 1) count++;
     }
     return count;
   }
@@ -84,9 +82,15 @@ class _MyPlantState extends State<MyPlant> {
                     height: screenSize.height * 0.10,
                     padding: EdgeInsets.all(12),
                     child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: (widget.plantData.image_url!=null)?Image.network(widget.plantData.image_url):null,
+                      child: Container(
+                        width: screenSize.width * 0.20,
+                        height: screenSize.height * 0.7,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: (widget.plantData.imageUrl != null)
+                              ? Image.network(widget.plantData.imageUrl)
+                              : null,
+                        ),
                       ),
                     ),
                   ),
@@ -105,7 +109,12 @@ class _MyPlantState extends State<MyPlant> {
                           widget.plantData.title,
                           style: TextStyle(fontSize: screenSize.height * 0.025),
                         ),
-                        Text("$tasksDone/${widget.plantData.tasks.length}",style: TextStyle(fontSize: screenSize.height * 0.018,color: Colors.grey),)
+                        Text(
+                          "$tasksDone/${widget.plantData.tasks.length}",
+                          style: TextStyle(
+                              fontSize: screenSize.height * 0.018,
+                              color: Colors.grey),
+                        )
                       ],
                     ),
                   ),
@@ -121,7 +130,7 @@ class _MyPlantState extends State<MyPlant> {
                       ),
                       iconSize: screenSize.height * 0.020,
                       onPressed: () {
-                        PopUP().showAlertCustom(context,widget.plantData.id);
+                        PopUP().showAlertCustom(context, widget.plantData.id);
                       },
                     ),
                   )

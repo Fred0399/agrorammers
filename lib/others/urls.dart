@@ -6,4 +6,4 @@ const String getPlant=domain+"getPlants";
 
 const String searchMember=domain+"searchMember";
 
-const String addMember=domain+"addMember";
+const String addMemberr=domain+"addMember";

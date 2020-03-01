@@ -107,12 +107,12 @@ class PopUP {
       buttons: [
         DialogButton(
           onPressed: () {
-            SearchUser().addMember(list[0].socialId,plantId).then((res){
-              if(res!=null && res['status']=="success"){
+            SearchUser().addMember(list[0].id,plantId).then((res){
+              if(res!=null && res==true){
                 toast("İstifadəçi əlavə edildi!");
               }
             }).catchError((error){
-              toast("Xəta!");
+              toast("Xəta! + $error");
             });
           },
           child: Text(
