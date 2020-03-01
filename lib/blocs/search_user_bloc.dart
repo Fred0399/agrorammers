@@ -29,13 +29,15 @@ class SearchUser {
   }
 
   Future<bool> addMember(int socialID, int plantID) async {
-    final response = await http
-        .post(addMemberr, body: {'plant': plantID.toString(), 'member': socialID.toString()});
+    print(socialID);
+    print(plantID);
+    final response = await http.post(addMemberr,
+        body: {'plant': plantID.toString(), 'member': socialID.toString()});
     final extractedData = json.decode(response.body) as Map<String, dynamic>;
     if (extractedData == null) {
       return null;
     }
-    
-    return (extractedData['status']=="success") ? true : false;
+
+    return (extractedData['status'] == "success") ? true : false;
   }
 }

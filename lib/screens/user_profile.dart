@@ -65,19 +65,23 @@ class _UserProfileState extends State<UserProfile> {
                       ],
                     ),
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: (widget.userData.imageUrl != null)
-                        ? Image.network(
-                            widget.userData.imageUrl,
-                            height: screenSize.height * 0.125,
-                            width: screenSize.height * 0.125,
-                          )
-                        : Image.asset(
-                            "assets/ui_icons/user.png",
-                            height: screenSize.height * 0.125,
-                            width: screenSize.height * 0.125,
-                          ),
+                  Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: (widget.userData.imageUrl != null)
+                            ? Image.network(
+                                widget.userData.imageUrl,
+                                height: screenSize.height * 0.125,
+                                width: screenSize.height * 0.125,
+                              )
+                            : Image.asset(
+                                "assets/ui_icons/user.png",
+                                height: screenSize.height * 0.125,
+                                width: screenSize.height * 0.125,
+                              ),
+                      ),
+                    ],
                   ),
                 ],
               ),

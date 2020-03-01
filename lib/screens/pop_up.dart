@@ -1,6 +1,7 @@
+import 'package:agrorammers/blocs/plant_bloc.dart';
 import 'package:agrorammers/blocs/search_user_bloc.dart';
+import 'package:agrorammers/data/plant_data.dart';
 import 'package:agrorammers/data/user.dart';
-import 'package:agrorammers/others/urls.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -11,6 +12,8 @@ class PopUP {
   PopUP({this.plantID});
 
   TextEditingController _textFieldControllerEmail = TextEditingController();
+  TextEditingController _textFieldControllerPlant = TextEditingController();
+
   var alertStyle = AlertStyle(
     animationType: AnimationType.grow,
     isOverlayTapDismiss: false,
@@ -60,22 +63,61 @@ class PopUP {
 
   Widget userBox(User user, Size screenSize) {
     return Container(
+      width: screenSize.width * 0.9,
+      height: screenSize.height * 0.1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(user.name),
+          Container(
+            width: screenSize.height * 0.1,
+            height: screenSize.height * 0.1,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: new DecorationImage(
+                    image: new NetworkImage(user.imageUrl))),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget plantBox(BuildContext context,PlantData plantData, int userID, Size screenSize) {
+    return GestureDetector(
+      onTap: () {
+        SearchUser().addMember(userID, plantData.id).then(
+          (res) {
+            if (res) {
+              toast("Bitki sahənizə əlavə edildi!");
+              Navigator.of(context).pop();
+            }
+          },
+        ).catchError((error) {
+          toast("Xəta!");
+        });
+      },
+      child: Container(
         width: screenSize.width * 0.9,
         height: screenSize.height * 0.1,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(user.name),
+            Text(plantData.title),
             Container(
               width: screenSize.height * 0.1,
               height: screenSize.height * 0.1,
               decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: new DecorationImage(
-                      image: new NetworkImage(user.imageUrl))),
+                shape: BoxShape.circle,
+                image: new DecorationImage(
+                  image: new NetworkImage(
+                    plantData.imageUrl,
+                  ),
+                ),
+              ),
             )
           ],
         ),
+      ),
     );
   }
 
@@ -107,11 +149,12 @@ class PopUP {
       buttons: [
         DialogButton(
           onPressed: () {
-            SearchUser().addMember(list[0].id,plantId).then((res){
-              if(res!=null && res==true){
+            SearchUser().addMember(list[0].id, plantId).then((res) {
+              if (res != null && res == true) {
                 toast("İstifadəçi əlavə edildi!");
+                Navigator.of(context).pop();
               }
-            }).catchError((error){
+            }).catchError((error) {
               toast("Xəta! + $error");
             });
           },
@@ -121,6 +164,25 @@ class PopUP {
           ),
         )
       ],
+    ).show();
+  }
+
+  void showAlertPlants(BuildContext context, List<PlantData> list, int userID) {
+    Size sizee = MediaQuery.of(context).size;
+    Alert(
+      context: context,
+      style: alertStyle,
+      title: "",
+      content: Container(
+        width: sizee.width * 90 / 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: list.map((val) {
+            return plantBox(context,val, userID, sizee);
+          }).toList(),
+        ),
+      ),
+      buttons: [],
     ).show();
   }
 
@@ -164,6 +226,48 @@ class PopUP {
                 .searchUser(_textFieldControllerEmail.text)
                 .then((userData) {
               showAlertUsers(context, userData, plantID);
+            }).catchError((error) {
+              toast(error.toString());
+            });
+          },
+          child: Text(
+            "GÖNDƏR",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        )
+      ],
+    ).show();
+  }
+
+  void showAlertPlant(BuildContext context, int userID) {
+    Alert(
+      context: context,
+      style: alertStyle,
+      title: "",
+      content: Container(
+        width: MediaQuery.of(context).size.width * 90 / 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            textFieldsCustomized(
+                localTextEdit: _textFieldControllerPlant,
+                hintTextt: "Bitki adını daxil edin",
+                defTextFieldType: 0,
+                labelTextt: "Bitkilər"),
+          ],
+        ),
+      ),
+      buttons: [
+        DialogButton(
+          onPressed: () {
+            final String _valueStr = _textFieldControllerPlant.text;
+            if (_valueStr == null) {
+              return;
+            }
+            Plants().searchPlant(_valueStr).then((userData) {
+              (userData != null && userData.length != 0)
+                  ? showAlertPlants(context, userData, userID)
+                  : toast("Nəticə tapılmadı!");
             }).catchError((error) {
               toast(error.toString());
             });
