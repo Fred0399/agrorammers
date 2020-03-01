@@ -28,13 +28,14 @@ class SearchUser {
     return list;
   }
 
-  Future<Map<String, String>> addMember(String socialID, int plantID) async {
+  Future<bool> addMember(int socialID, int plantID) async {
     final response = await http
-        .post(addMember, body: {'plant': plantID, 'member': socialID});
+        .post(addMemberr, body: {'plant': plantID.toString(), 'member': socialID.toString()});
     final extractedData = json.decode(response.body) as Map<String, dynamic>;
     if (extractedData == null) {
       return null;
     }
-    return extractedData;
+    
+    return (extractedData['status']=="success") ? true : false;
   }
 }

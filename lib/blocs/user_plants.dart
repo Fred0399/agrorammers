@@ -13,11 +13,13 @@ class UserPlants {
     List<PlantData> list = [];
     extractedData.map((val) {
       if (val['status'] == "success") {
+        print(val['plant']);
         list.add(
           PlantData(
-            id: val['id'],
-            image_url: val['picture'],
-            title: val['title'],
+            id: val['plant']['id'],
+            imageUrl: val['plant']['picture'],
+            title: val['plant']['title'],
+            tasks: []
           ),
         );
       }

@@ -2,6 +2,7 @@ import 'package:agrorammers/blocs/user_plants.dart';
 import 'package:agrorammers/data/plant_data.dart';
 import 'package:agrorammers/data/user.dart';
 import 'package:agrorammers/screens/user_profile.dart';
+import 'package:agrorammers/widgets/my_plant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../blocs/login_provider.dart';
@@ -11,10 +12,10 @@ import 'home.dart';
 class LoginPage extends StatefulWidget {
   int choosedind = 0;
   String appBarTitle = "Sahəm";
-
   User loggedUser;
 
   List<PlantData> list;
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -50,16 +51,16 @@ class _LoginPageState extends State<LoginPage> {
                     UserPlants()
                         .getPlants(widget.loggedUser.socialId)
                         .then((result) {
-                      print(result);
+                      setState(() {
+                        widget.choosedind = 0;
+                        widget.appBarTitle = "Sahəm";
+                        _myPage.jumpToPage(0);
+                        widget.list = result;
+                      });
                     }).catchError((error) {
                       print(error);
                     });
                   }
-                  setState(() {
-                    widget.choosedind = 0;
-                    widget.appBarTitle = "Sahəm";
-                    _myPage.jumpToPage(0);
-                  });
                 },
               ),
               IconButton(
