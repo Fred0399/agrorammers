@@ -10,7 +10,7 @@ class Forum {
   Forum({
     @required this.id,
     this.body,
-    @required this.userID,
+    this.userID,
     this.title,
     this.userName,
     this.userPicUrl,

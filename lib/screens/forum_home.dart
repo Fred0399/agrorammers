@@ -1,24 +1,18 @@
+import 'package:agrorammers/blocs/forum_bloc.dart';
 import 'package:agrorammers/data/forum.dart';
 import 'package:agrorammers/data/user.dart';
 import 'package:agrorammers/screens/forum_full.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ForumHome extends StatefulWidget {
-  final User user;
+  User user;
 
-  List<Forum> listForum = [
-    Forum(
-      userName: "Farid Jafarov",
-      userPicUrl: null,
-      title: "NArohodoooo",
-      id: 1,
-      userID: 1,
-      body: "Lorem ipsum ipsum lorem lorem ipsum lorem",
-    ),
-  ];
+  List<Forum> listForum;
 
   ForumHome(this.user);
-
+  var _isLoading = false;
+  var _isInit = true;
   @override
   _ForumHomeState createState() => _ForumHomeState();
 }
@@ -28,45 +22,73 @@ class _ForumHomeState extends State<ForumHome> {
   TextEditingController _textFieldTitleController = TextEditingController();
 
   @override
+  void didChangeDependencies() {
+    if (widget._isInit) {
+      // widget.user = ModalRoute.of(context).settings.arguments as User;
+      ForumBloc().getForums().then((result) {
+        setState(() {
+          widget._isLoading = false;
+          widget.listForum = result;
+        });
+      }).catchError((error) {
+        print(error);
+      });
+    }
+    widget._isInit = false;
+    widget._isLoading = true;
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Container(
       height: double.infinity,
       width: double.infinity,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            formHead(screenSize),
-            SizedBox(
-              height: 7,
+      child: (widget._isLoading)
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  formHead(screenSize),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  formBody(screenSize),
+                ],
+              ),
             ),
-            formBody(screenSize),
-          ],
-        ),
-      ),
     );
   }
 
   Widget formBody(Size screenSize) {
     return Container(
       width: screenSize.width * 0.90,
-      height: screenSize.height * 0.43,
-      child: ListView(
-        shrinkWrap: true,
-        children: widget.listForum.map(
-          (val) {
-            return form(val, screenSize);
-          },
-        ).toList(),
-      ),
+      height: screenSize.height * 0.35,
+      child: (widget.listForum != null)
+          ? ListView(
+              shrinkWrap: true,
+              children: widget.listForum.map(
+                (val) {
+                  return form(val, screenSize);
+                },
+              ).toList(),
+            )
+          : Center(
+              child: Text("Məlumat yoxdur!"),
+            ),
     );
   }
 
   Widget form(Forum forum, Size screenSize) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(ForumFull.routeName,arguments: forum);
+        // _isInit=true;
+        // widget._isLoading=false;
+        Navigator.of(context).pushNamed(ForumFull.routeName, arguments: forum);
       },
       child: Container(
         width: screenSize.width * 0.90,
@@ -182,7 +204,31 @@ class _ForumHomeState extends State<ForumHome> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
-                    //send forum
+                    ForumBloc()
+                        .addForum(_textFieldTitleController.text,
+                            _textFieldControllerContent.text, widget.user.id)
+                        .then((val) {
+                      if (val) {
+                        setState(() {
+                          widget._isLoading = true;
+                        });
+                        ForumBloc().getForums().then((res) {
+                          setState(() {
+                            widget.listForum = res;
+                            widget._isLoading = false;
+                          });
+                        }).catchError((error) {
+                          print(error);
+                        });
+                        toast("Göndərildi!");
+                        _textFieldControllerContent.text = "";
+                        _textFieldTitleController.text = "";
+                      } else {
+                        toast("Xəta!");
+                      }
+                    }).catchError((error) {
+                      print(error);
+                    });
                   },
                   color: Theme.of(context).primaryColor,
                   shape: RoundedRectangleBorder(
@@ -216,6 +262,18 @@ class _ForumHomeState extends State<ForumHome> {
           ],
         ),
       ),
+    );
+  }
+
+  void toast(String strg) {
+    Fluttertoast.showToast(
+      msg: strg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.TOP,
+      timeInSecForIos: 1,
+      backgroundColor: Colors.green,
+      textColor: Colors.white,
+      fontSize: 16.0,
     );
   }
 }
