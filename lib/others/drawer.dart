@@ -1,3 +1,4 @@
+import 'package:agrorammers/screens/catalog_page.dart';
 import 'package:flutter/material.dart';
 
 class AppIconForDrawer extends StatelessWidget {
@@ -28,7 +29,7 @@ class DrawerPg extends StatelessWidget {
   final Function comenSoonen;
   final Function logout;
 
-  DrawerPg({this.comenSoonen,this.logout});
+  DrawerPg({this.comenSoonen, this.logout});
 
   static Widget instaFaceRow(BuildContext ctx, Color iconColor, bool isDraw) {
     return Row(
@@ -88,7 +89,10 @@ class DrawerPg extends StatelessWidget {
                 }),
             drawDesign(
               content: "Kataloq",
-              pressFunc: () {},
+              pressFunc: () {
+                // Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(CatalogPage.routeName);
+              },
             ),
             drawDesign(
               content: "Çıxış",

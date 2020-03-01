@@ -1,3 +1,4 @@
+import 'package:agrorammers/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'blocs/login_provider.dart';
 import 'screens/catalog_page.dart';
@@ -21,7 +22,7 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/',
         routes: {
-          '/': (ctx) => CatalogPage(),
+          '/': (ctx) => LoginPage(),
           CatalogPage.routeName: (ctx) => CatalogPage(),
         },
       ),
