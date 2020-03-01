@@ -49,7 +49,7 @@ class CatalogItem extends StatelessWidget {
             borderRadius: BorderRadius.all(
               Radius.circular(10),
             ),
-            color: Colors.green,
+            color: Colors.greenAccent,
           ),
           height: MediaQuery.of(context).size.height * 0.2,
           child: Padding(
@@ -72,9 +72,9 @@ class CatalogItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: LimitedBox(
-                      maxWidth: MediaQuery.of(context).size.width * 0.40,
+                      maxWidth: MediaQuery.of(context).size.width * 0.30,
+                      maxHeight: MediaQuery.of(context).size.width * 0.30,
                       child: Image(
-                        // height: 110,
                         image: AssetImage(imagePath),
                         fit: BoxFit.contain,
                       ),

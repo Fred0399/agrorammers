@@ -28,7 +28,7 @@ class CatalogDiseaseInfoPage extends StatelessWidget {
                 width: double.infinity,
                 child: Card(
                   margin: EdgeInsets.all(10),
-                  color: Colors.yellowAccent,
+                  color: Colors.greenAccent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
