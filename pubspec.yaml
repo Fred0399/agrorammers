@@ -57,7 +57,8 @@ flutter:
    - assets/catalog_items/melon.png
    - assets/catalog_items/onion.png
    - assets/catalog_items/tomato.png
-
+   - assets/ui_icons/add_user.png
+   - assets/ui_icons/user.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

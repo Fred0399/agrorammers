@@ -22,16 +22,12 @@ class LoginBloc {
   sigInGoogle() async {
     _googleSignIn.signIn().then((GoogleSignInAccount account) async {
       //_google.sink.add(account);
-      print(account);
       final response = await http.post(loginApi, body: {'name':account.displayName,'email':account.email,'social_id':account.id,'picture_url':account.photoUrl,});
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       if (extractedData == null) {
         return null;
       }
-      return extractedData;
-    }).then((result) {
-      print(result);
-      _userInfos.sink.add(result);
+      _userInfos.sink.add(extractedData);
     }).catchError((error) {
       print("Error in Login $error");
     });
@@ -43,5 +39,6 @@ class LoginBloc {
 
   dispose() {
     _google.close();
+    _userInfos.close();
   }
 }
