@@ -1,7 +1,6 @@
 import 'package:agrorammers/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'blocs/login_provider.dart';
-import 'colors.dart';
 import 'screens/catalog_page.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +11,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final MaterialColor colorCustom = MaterialColor(0xFF0158B7, color);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/',
         routes: {
-          '/': (ctx) => CatalogPage(),
+          '/': (ctx) => LoginPage(),
           CatalogPage.routeName: (ctx) => CatalogPage(),
         },
       ),
