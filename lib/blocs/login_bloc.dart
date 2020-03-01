@@ -13,7 +13,6 @@ class LoginBloc {
   sigInGoogle() async {
     _googleSignIn.signIn().then((GoogleSignInAccount account) {
       _google.sink.add(account);
-      print(account);
     });
   }
 

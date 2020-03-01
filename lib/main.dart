@@ -21,7 +21,10 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.green,
         ),
-        home: CatalogPage(),
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => LoginPage(),
+        },
       ),
     );
   }

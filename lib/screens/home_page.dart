@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../blocs/login_provider.dart';
+import '../drawer.dart';
 
 class LoginPage extends StatefulWidget {
-
+  int choosedind=0;
+  String appBarTitle="Sahəm";
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -14,10 +16,12 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final bloc = LoginProvider.of(context);
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login screen'),
+        title: Text(widget.appBarTitle),
       ),
+      drawer: DrawerPg(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -31,8 +35,11 @@ class _LoginPageState extends State<LoginPage> {
                 iconSize: 30.0,
                 padding: EdgeInsets.only(left: 28.0),
                 icon: Icon(Icons.home),
+                color: (widget.choosedind == 0) ? Colors.green : Colors.black,
                 onPressed: () {
                   setState(() {
+                    widget.choosedind = 0;
+                    widget.appBarTitle="Sahəm";
                     _myPage.jumpToPage(0);
                   });
                 },
@@ -41,8 +48,11 @@ class _LoginPageState extends State<LoginPage> {
                 iconSize: 30.0,
                 padding: EdgeInsets.only(right: 28.0),
                 icon: Icon(Icons.search),
+                color: (widget.choosedind == 1) ? Colors.green : null,
                 onPressed: () {
                   setState(() {
+                    widget.appBarTitle="Forum";
+                    widget.choosedind = 1;
                     _myPage.jumpToPage(1);
                   });
                 },
@@ -51,8 +61,11 @@ class _LoginPageState extends State<LoginPage> {
                 iconSize: 30.0,
                 padding: EdgeInsets.only(left: 28.0),
                 icon: Icon(Icons.notifications),
+                color: (widget.choosedind == 2) ? Colors.green : null,
                 onPressed: () {
                   setState(() {
+                    widget.appBarTitle="Sahəm";
+                    widget.choosedind = 2;
                     _myPage.jumpToPage(2);
                   });
                 },
@@ -61,8 +74,12 @@ class _LoginPageState extends State<LoginPage> {
                 iconSize: 30.0,
                 padding: EdgeInsets.only(right: 28.0),
                 icon: Icon(Icons.account_circle),
+                color: (widget.choosedind == 3) ? Colors.green : null,
                 onPressed: () {
+                  bloc.sigInGoogle();
                   setState(() {
+                    widget.appBarTitle="Profil";
+                    widget.choosedind = 3;
                     _myPage.jumpToPage(3);
                   });
                 },
@@ -92,13 +109,19 @@ class _LoginPageState extends State<LoginPage> {
               child: Text('Empty Body 2'),
             ),
           ),
-          Center(
-            child: Container(
-              child: Text('Empty Body 3'),
-            ),
+          StreamBuilder(
+            stream: bloc.googleAccount,
+            builder: (BuildContext context,
+                AsyncSnapshot<GoogleSignInAccount> snapshot) {
+              return Center(
+                child:
+                    (snapshot.hasData) ? Text(snapshot.data.displayName) : null,
+              );
+            },
           )
         ],
-        physics: NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
+        physics:
+            NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
       ),
       floatingActionButton: Container(
         height: 65.0,
