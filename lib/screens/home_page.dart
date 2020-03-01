@@ -80,11 +80,11 @@ class _LoginPageState extends State<LoginPage> {
               IconButton(
                 iconSize: 30.0,
                 padding: EdgeInsets.only(left: 28.0),
-                icon: Icon(Icons.notifications),
+                icon: Icon(Icons.store),
                 color: (widget.choosedind == 2) ? Colors.green : null,
                 onPressed: () {
                   setState(() {
-                    widget.appBarTitle = "Sahəm";
+                    widget.appBarTitle = "Bazar";
                     widget.choosedind = 2;
                     _myPage.jumpToPage(2);
                   });
@@ -135,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
           Center(
             child: Container(
-              child: Text('Empty Body 2'),
+              child: Text("Məlumat yoxdur!"),
             ),
           ),
           (widget.loggedUser == null)
