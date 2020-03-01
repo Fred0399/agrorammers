@@ -23,85 +23,121 @@ class MarketItem extends StatelessWidget {
       child: Card(
         color: Colors.green,
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: Center(
-            child: Column(
-              children: <Widget>[
+            child: Row(
+              children: [
+                ClipRect(
+                  //borderRadius: BorderRadius.all(Radius.circular(20)),
+                  child: (imageUrl != null)
+                      ? Image.network(
+                          imageUrl,
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          width: MediaQuery.of(context).size.height * 0.12,
+                        )
+                      : Image.asset(
+                          "assets/ui_icons/user.png",
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          width: MediaQuery.of(context).size.height * 0.12,
+                        ),
+                ),
                 Expanded(
-                  flex: 6,
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        child: (imageUrl != null)
-                            ? Image.network(
-                                imageUrl,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.1,
-                                width: MediaQuery.of(context).size.height * 0.1,
-                              )
-                            : Image.asset(
-                                "assets/ui_icons/user.png",
-                                height:
-                                    MediaQuery.of(context).size.height * 0.1,
-                                width: MediaQuery.of(context).size.height * 0.1,
-                              ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Column(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           Text(
                             'Id number',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
+                          SizedBox(width: 20),
                           Text(
                             '#236',
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
                         ],
-                      )
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: 50,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'assets/catalog_items/' + items[0] + '.png',
-                            ),
-                          ),
-                        ),
-                        child: Positioned(
-                          bottom: 0,
-                          left: 0,
-                          child: Image.asset(
-                            'assets/catalog_items/' + items[0] + '.png',
-                          ),
-                        ),
                       ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        child: Image.asset(
-                          'assets/catalog_items/' + items[0] + '.png',
-                          fit: BoxFit.scaleDown,
-                        ),
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        child: Image.asset(
-                          'assets/catalog_items/' + items[0] + '.png',
-                          fit: BoxFit.scaleDown,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Stack(
+                            alignment: Alignment.bottomRight,
+                            children: <Widget>[
+                              Container(
+                                height: MediaQuery.of(context).size.height *
+                                    0.23 *
+                                    0.35,
+                                child: Image.asset(
+                                  'assets/catalog_items/Pomidor.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
+                              Container(
+                                height: MediaQuery.of(context).size.height *
+                                    0.23 *
+                                    0.5 *
+                                    0.4,
+                                child: Image.asset(
+                                  'assets/catalog_items/Pomidor.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Stack(
+                            alignment: Alignment.bottomRight,
+                            children: <Widget>[
+                              Container(
+                                height: MediaQuery.of(context).size.height *
+                                    0.23 *
+                                    0.35,
+                                child: Image.asset(
+                                  'assets/catalog_items/Pomidor.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
+                              Container(
+                                height: MediaQuery.of(context).size.height *
+                                    0.23 *
+                                    0.5 *
+                                    0.4,
+                                child: Image.asset(
+                                  'assets/catalog_items/Pomidor.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Stack(
+                            alignment: Alignment.bottomRight,
+                            children: <Widget>[
+                              Container(
+                                height: MediaQuery.of(context).size.height *
+                                    0.23 *
+                                    0.35,
+                                child: Image.asset(
+                                  'assets/catalog_items/Pomidor.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
+                              Container(
+                                height: MediaQuery.of(context).size.height *
+                                    0.23 *
+                                    0.5 *
+                                    0.4,
+                                child: Image.asset(
+                                  'assets/catalog_items/Pomidor.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ],
                   ),

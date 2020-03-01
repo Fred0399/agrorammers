@@ -16,27 +16,7 @@ class MarketPage extends StatelessWidget {
         title: Text('Bazar'),
       ),
       body: Container(
-        width: double.infinity,
-        height: 250,
-        child: Stack(
-          alignment: Alignment.bottomRight,
-          children: <Widget>[
-            Expanded(
-              flex: 2,
-              child: Image.asset(
-                'assets/catalog_items/Pomidor.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Image.asset(
-                'assets/catalog_items/Pomidor.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ],
-        ),
+        child: MarketItem(user),
       ),
     );
   }
