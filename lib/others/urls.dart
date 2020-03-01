@@ -12,3 +12,8 @@ const String addForumm=domain+"addForm";
 
 const String getFormss=domain+"getForm";
 
+const String getCommentss=domain+"getComment";
+
+const String addCommentss=domain+"addComment";
+
+const String searchPlantss=domain+"searchPlant";

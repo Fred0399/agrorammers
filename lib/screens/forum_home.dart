@@ -1,7 +1,7 @@
 import 'package:agrorammers/blocs/forum_bloc.dart';
 import 'package:agrorammers/data/forum.dart';
 import 'package:agrorammers/data/user.dart';
-import 'package:agrorammers/screens/forum_full.dart';
+import 'package:agrorammers/widgets/forum_full.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -86,9 +86,11 @@ class _ForumHomeState extends State<ForumHome> {
   Widget form(Forum forum, Size screenSize) {
     return GestureDetector(
       onTap: () {
-        // _isInit=true;
-        // widget._isLoading=false;
-        Navigator.of(context).pushNamed(ForumFull.routeName, arguments: forum);
+        forum.userID=widget.user.id;
+        Navigator.of(context).pushNamed(
+          ForumFull.routeName,
+          arguments: forum,
+        );
       },
       child: Container(
         width: screenSize.width * 0.90,
