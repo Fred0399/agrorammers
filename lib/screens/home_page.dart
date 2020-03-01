@@ -47,7 +47,12 @@ class _LoginPageState extends State<LoginPage> {
                 color: (widget.choosedind == 0) ? Colors.green : Colors.black,
                 onPressed: () {
                   if (widget.loggedUser != null) {
-                    UserPlants().getPlants(widget.loggedUser.socialId).then((result){print(result);}).catchError((error){
+                    UserPlants()
+                        .getPlants(widget.loggedUser.socialId)
+                        .then((result) {
+                          
+                        })
+                        .catchError((error) {
                       print(error);
                     });
                   }
