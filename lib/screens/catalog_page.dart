@@ -7,9 +7,13 @@ class CatalogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Məlumat'),
+      ),
       backgroundColor: Colors.green,
       body: ListView(
-        children: catalogPlants.map((title) => CatalogItem(title)).toList(),
+        children:
+            catalogPlants.map((title) => CatalogItem(title: title)).toList(),
       ),
     );
   }

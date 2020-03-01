@@ -56,7 +56,8 @@ flutter:
    - assets/catalog_items/garlic.png
    - assets/catalog_items/melon.png
    - assets/catalog_items/onion.png
-   - assets/catalog_items/tomato.png
+   - assets/catalog_items/Pomidor.png
+   - assets/catalog_diseases/Pomidor/Yalançı unlu şeh xəstəliyi.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
