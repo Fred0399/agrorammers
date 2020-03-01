@@ -49,7 +49,7 @@ class CatalogItem extends StatelessWidget {
             borderRadius: BorderRadius.all(
               Radius.circular(10),
             ),
-            color: Colors.yellowAccent.withOpacity(0.7),
+            color: Colors.green,
           ),
           height: MediaQuery.of(context).size.height * 0.2,
           child: Padding(
