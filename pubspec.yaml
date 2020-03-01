@@ -52,8 +52,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - assets/catalog_items/carrot.png
-  #  - assets/catalog_items/cucumber.png
-  #  - assets/catalog_items/garlic.png
+   - assets/catalog_items/cucumber.png
+   - assets/catalog_items/garlic.png
    - assets/catalog_items/melon.png
    - assets/catalog_items/onion.png
    - assets/catalog_items/tomato.png

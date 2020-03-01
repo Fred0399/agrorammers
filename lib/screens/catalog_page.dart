@@ -1,4 +1,5 @@
 import 'package:agrorammers/catalog_item.dart';
+import 'package:agrorammers/others/catalog_data.dart';
 import 'package:flutter/material.dart';
 
 class CatalogPage extends StatelessWidget {
@@ -8,9 +9,7 @@ class CatalogPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green,
       body: ListView(
-        children: <Widget>[
-          CatalogItem('tie', 'assets/catalog_items/melon.png')
-        ],
+        children: catalogPlants.map((title) => CatalogItem(title)).toList(),
       ),
     );
   }
