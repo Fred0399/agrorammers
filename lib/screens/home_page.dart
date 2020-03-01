@@ -1,4 +1,7 @@
+import 'package:agrorammers/blocs/user_plants.dart';
 import 'package:agrorammers/data/plant_data.dart';
+import 'package:agrorammers/data/user.dart';
+import 'package:agrorammers/screens/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../blocs/login_provider.dart';
@@ -8,6 +11,7 @@ import 'home.dart';
 class LoginPage extends StatefulWidget {
   int choosedind = 0;
   String appBarTitle = "Sahəm";
+<<<<<<< HEAD
   List<PlantData> list = [
     PlantData(
       id: 123123,
@@ -26,6 +30,11 @@ class LoginPage extends StatefulWidget {
       ],
     )
   ];
+=======
+  User loggedUser;
+
+  List<PlantData> list;
+>>>>>>> f010a3a4937f5628cff96a657c493f900e7ec395
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -58,6 +67,11 @@ class _LoginPageState extends State<LoginPage> {
                 icon: Icon(Icons.home),
                 color: (widget.choosedind == 0) ? Colors.green : Colors.black,
                 onPressed: () {
+                  if (widget.loggedUser != null) {
+                    UserPlants().getPlants(widget.loggedUser.socialId).then((result){print(result);}).catchError((error){
+                      print(error);
+                    });
+                  }
                   setState(() {
                     widget.choosedind = 0;
                     widget.appBarTitle = "Sahəm";
@@ -99,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   bloc.sigInGoogle();
                   setState(() {
-                    widget.appBarTitle = "Profil";
+                    widget.appBarTitle = "Hesab";
                     widget.choosedind = 3;
                     _myPage.jumpToPage(3);
                   });
@@ -137,16 +151,30 @@ class _LoginPageState extends State<LoginPage> {
               child: Text('Empty Body 2'),
             ),
           ),
-          StreamBuilder(
-            stream: bloc.googleAccount,
-            builder: (BuildContext context,
-                AsyncSnapshot<GoogleSignInAccount> snapshot) {
-              return Center(
-                child:
-                    (snapshot.hasData) ? Text(snapshot.data.displayName) : null,
-              );
-            },
-          )
+          (widget.loggedUser == null)
+              ? StreamBuilder(
+                  stream: bloc.userAccount,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<Map<String, dynamic>> snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.data != null &&
+                        snapshot.data['status'] == "success" &&
+                        snapshot.data['data'] != null) {
+                      widget.loggedUser = new User(
+                          id: snapshot.data['data']['id'],
+                          name: snapshot.data['data']['name'],
+                          email: snapshot.data['data']['email'],
+                          socialId: snapshot.data['data']['social_id'],
+                          imageUrl: snapshot.data['data']['picture_url']);
+                    }
+                    if (widget.loggedUser == null)
+                      return Center(
+                        child: Text("Məlumat yoxdur!"),
+                      );
+                    return UserProfile(userData: widget.loggedUser);
+                  },
+                )
+              : UserProfile(userData: widget.loggedUser),
         ],
         physics:
             NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

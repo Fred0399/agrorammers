@@ -16,14 +16,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: widget.list.map(
-        (val) {
-          return MyPlant(
-            plantData: val,
-          );
-        },
-      ).toList()),
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: widget.list.map(
+          (val) {
+            return MyPlant(
+              plantData: val,
+            );
+          },
+        ).toList(),
+      ),
     );
   }
 }
