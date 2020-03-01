@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'blocs/login_provider.dart';
-import 'screens/home_page.dart';
+import 'screens/catalog_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +21,8 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/',
         routes: {
-          '/': (ctx) => LoginPage(),
+          '/': (ctx) => CatalogPage(),
+          CatalogPage.routeName: (ctx) => CatalogPage(),
         },
       ),
     );
