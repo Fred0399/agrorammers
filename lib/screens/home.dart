@@ -15,11 +15,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: (widget.list != null)
-          ? Column(children: widget.list.map((val) {}).toList())
-          : Center(
-              child: Text("Bitki əlavə edilməyib!"),
-            ),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: widget.list.map(
+        (val) {
+          return MyPlant(
+            plantData: val,
+          );
+        },
+      ).toList()),
     );
   }
 }
