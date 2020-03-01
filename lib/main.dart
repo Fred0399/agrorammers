@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return LoginProvider(
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Login App',
         theme: ThemeData(
           primarySwatch: Colors.green,
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
           CatalogPage.routeName: (ctx) => CatalogPage(),
           CatalogDiseasesListPage.routeName: (ctx) => CatalogDiseasesListPage(),
           CatalogDiseaseInfoPage.routeName: (ctx) => CatalogDiseaseInfoPage(),
-          ForumFull.routeName:(ctx)=>ForumFull(),
+          ForumFull.routeName: (ctx) => ForumFull(),
           MarketPage.routeName: (ctx) => MarketPage(),
         },
       ),
