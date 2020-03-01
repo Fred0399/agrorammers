@@ -11,9 +11,30 @@ import 'home.dart';
 class LoginPage extends StatefulWidget {
   int choosedind = 0;
   String appBarTitle = "Sahəm";
+<<<<<<< HEAD
+  List<PlantData> list = [
+    PlantData(
+      id: 123123,
+      title: "Pomidor",
+      image: Image.asset('assets/catalog_items/Pomidor.png'),
+      tasks: [
+        TaskCare(isDone: 0, note: "5 gunden 1 sula"),
+      ],
+    ),
+    PlantData(
+      id: 123123,
+      title: "Pomidor",
+      image: Image.asset('assets/catalog_items/Pomidor.png'),
+      tasks: [
+        TaskCare(isDone: 0, note: "5 gunden 1 sula"),
+      ],
+    )
+  ];
+=======
   User loggedUser;
 
   List<PlantData> list;
+>>>>>>> f010a3a4937f5628cff96a657c493f900e7ec395
 
   @override
   _LoginPageState createState() => _LoginPageState();

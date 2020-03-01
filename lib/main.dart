@@ -1,3 +1,5 @@
+import 'package:agrorammers/screens/catalog_disease_info_page.dart';
+import 'package:agrorammers/screens/catalog_diseases_list_page.dart';
 import 'package:agrorammers/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'blocs/login_provider.dart';
@@ -11,7 +13,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     return LoginProvider(
@@ -24,6 +25,8 @@ class _MyAppState extends State<MyApp> {
         routes: {
           '/': (ctx) => LoginPage(),
           CatalogPage.routeName: (ctx) => CatalogPage(),
+          CatalogDiseasesListPage.routeName: (ctx) => CatalogDiseasesListPage(),
+          CatalogDiseaseInfoPage.routeName: (ctx) => CatalogDiseaseInfoPage(),
         },
       ),
     );
