@@ -15,7 +15,20 @@ class MarketPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Bazar'),
       ),
-      body: Container(),
+      body: Container(
+        child: MarketItem(user),
+      ),
     );
   }
 }
+
+// Container(
+//         height: 120.0,
+//         width: 120.0,
+//         decoration: new BoxDecoration(
+//           image: DecorationImage(
+//             image: new AssetImage('assets/catalog_items/Pomidor.png'),
+//             fit: BoxFit.cover,
+//           ),
+//           shape: BoxShape.circle,
+//         ),
