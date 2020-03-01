@@ -86,7 +86,37 @@ flutter:
    - assets/catalog_diseases/Soğan/Alabəzəklilik xəstəliyi.jpg
    - assets/catalog_diseases/Soğan/Soğanın sürmə xəstəliyi.jpg
    
-  
+   - assets/catalog_diseases/Sarımsaq/Yalançı unlu şeh xəstəliyi.jpg
+   - assets/catalog_diseases/Sarımsaq/Boğaz çürüməsi xəstəliyi.jpg
+   - assets/catalog_diseases/Sarımsaq/Fuzarioz gövdə çürümə xəstəliyi.jpg
+   - assets/catalog_diseases/Sarımsaq/Ağ çürümə xəstəliyi.jpg
+   - assets/catalog_diseases/Sarımsaq/Pas xəstəliyi.jpg
+   - assets/catalog_diseases/Sarımsaq/Bakterioz xəstəliyi.jpg
+   
+   - assets/catalog_diseases/Yemiş/Unlu şeh.jpg
+   - assets/catalog_diseases/Yemiş/Yalançı unlu şeh.jpg
+   - assets/catalog_diseases/Yemiş/Fuzarioz soluxması.jpg
+   - assets/catalog_diseases/Yemiş/Antraknoz və ya ballıca.jpg
+   - assets/catalog_diseases/Yemiş/Kök çürümələri.jpg
+   - assets/catalog_diseases/Yemiş/Askoxitoz.jpg
+   - assets/catalog_diseases/Yemiş/Boz çürümə.jpg
+   - assets/catalog_diseases/Yemiş/Ağ ləkəlilik.jpg
+   - assets/catalog_diseases/Yemiş/Qabaqkimilərin mozaikası.jpg
+   - assets/catalog_diseases/Yemiş/Künc ləkəlilik xəstəliyi.jpg
+
+
+   - assets/catalog_diseases/Kök/Qara çürümə xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Ağ çürümə.jpg
+   - assets/catalog_diseases/Kök/Boz çürümə xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Quru çürümə xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Rizoktonioz xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Unlu şeh xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Yalançı unlu şeh xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Qaraayaq xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Bakterioz xəstəliyi.jpg
+   - assets/catalog_diseases/Kök/Bakterial yaş çürümə xəstəliyi.jpg
+
+
 
    - assets/ui_icons/add_user.png
    - assets/ui_icons/user.png

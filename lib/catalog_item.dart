@@ -49,7 +49,7 @@ class CatalogItem extends StatelessWidget {
             borderRadius: BorderRadius.all(
               Radius.circular(10),
             ),
-            color: Colors.greenAccent,
+            color: Colors.green,
           ),
           height: MediaQuery.of(context).size.height * 0.2,
           child: Padding(
@@ -62,9 +62,9 @@ class CatalogItem extends StatelessWidget {
                   child: Text(
                     title,
                     style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ),
                 Padding(

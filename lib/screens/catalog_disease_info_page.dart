@@ -28,7 +28,7 @@ class CatalogDiseaseInfoPage extends StatelessWidget {
                 width: double.infinity,
                 child: Card(
                   margin: EdgeInsets.all(10),
-                  color: Colors.greenAccent,
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -37,8 +37,10 @@ class CatalogDiseaseInfoPage extends StatelessWidget {
                     child: Text(
                       diseasesInformation[diseaseName],
                       textAlign: TextAlign.start,
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
                     ),
                   ),
                 ),

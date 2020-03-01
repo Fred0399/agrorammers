@@ -1,4 +1,5 @@
 import 'package:agrorammers/screens/catalog_page.dart';
+import 'package:agrorammers/screens/market-page.dart';
 import 'package:flutter/material.dart';
 
 class AppIconForDrawer extends StatelessWidget {
@@ -92,6 +93,13 @@ class DrawerPg extends StatelessWidget {
               pressFunc: () {
                 // Navigator.of(context).pop();
                 Navigator.of(context).pushNamed(CatalogPage.routeName);
+              },
+            ),
+            drawDesign(
+              content: "Bazar",
+              pressFunc: () {
+                // Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(MarketPage.routeName);
               },
             ),
             drawDesign(

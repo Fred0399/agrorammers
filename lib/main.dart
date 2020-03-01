@@ -1,6 +1,7 @@
 import 'package:agrorammers/screens/catalog_disease_info_page.dart';
 import 'package:agrorammers/screens/catalog_diseases_list_page.dart';
 import 'package:agrorammers/screens/home_page.dart';
+import 'package:agrorammers/screens/market-page.dart';
 import 'package:flutter/material.dart';
 import 'blocs/login_provider.dart';
 import 'screens/catalog_page.dart';
@@ -27,6 +28,7 @@ class _MyAppState extends State<MyApp> {
           CatalogPage.routeName: (ctx) => CatalogPage(),
           CatalogDiseasesListPage.routeName: (ctx) => CatalogDiseasesListPage(),
           CatalogDiseaseInfoPage.routeName: (ctx) => CatalogDiseaseInfoPage(),
+          MarketPage.routeName: (ctx) => MarketPage(),
         },
       ),
     );
