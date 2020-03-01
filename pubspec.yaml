@@ -51,43 +51,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-<<<<<<< HEAD
-   - assets/catalog_items/Kök.png
-   - assets/catalog_items/Xiyar.png
-   - assets/catalog_items/Sarımsaq.png
-   - assets/catalog_items/Yemiş.png
-   - assets/catalog_items/Soğan.png
-   - assets/catalog_items/Pomidor.png
-
-   - assets/catalog_diseases/Pomidor/Təpə çürüməsi.jpg
-   - assets/catalog_diseases/Pomidor/Meyvənin çatlaması.jpg
-   - assets/catalog_diseases/Pomidor/Qara bakterial ləkəlilik.jpg
-   - assets/catalog_diseases/Pomidor/Bakterial xərçəng.jpg
-   - assets/catalog_diseases/Pomidor/Alternarioz.jpg
-
-
-   - assets/catalog_diseases/Xiyar/Xiyar mozaikası.jpg
-   - assets/catalog_diseases/Xiyar/Qaraayaq.jpg
-   - assets/catalog_diseases/Xiyar/Yalançı unlu şeh.jpg
-   - assets/catalog_diseases/Xiyar/Unlu şeh.jpg
-   - assets/catalog_diseases/Xiyar/Askoxitoz.jpg
-   - assets/catalog_diseases/Xiyar/Antraknoz.jpg
-   - assets/catalog_diseases/Xiyar/Alternarioz.jpg
-   - assets/catalog_diseases/Xiyar/Qara kif.jpg
-   - assets/catalog_diseases/Xiyar/Fuzarioz soluxma.jpg
-   
-
-   - assets/catalog_diseases/Soğan/Yalançı unlu şeh xəstəliyi.jpg
-   - assets/catalog_diseases/Soğan/Boğaz çürüməsi xəstəliyi.jpg
-   - assets/catalog_diseases/Soğan/Fuzarioz gövdə çürümə xəstəliyi.jpg
-   - assets/catalog_diseases/Soğan/Ağ çürümə xəstəliyi.jpg
-   - assets/catalog_diseases/Soğan/Pas xəstəliyi.jpg
-   - assets/catalog_diseases/Soğan/Bakterioz xəstəliyi.jpg
-   - assets/catalog_diseases/Soğan/Alabəzəklilik xəstəliyi.jpg
-   - assets/catalog_diseases/Soğan/Soğanın sürmə xəstəliyi.jpg
-   
-  
-=======
    - assets/catalog_items/carrot.png
    - assets/catalog_items/cucumber.png
    - assets/catalog_items/garlic.png
@@ -96,7 +59,6 @@ flutter:
    - assets/catalog_items/tomato.png
    - assets/ui_icons/add_user.png
    - assets/ui_icons/user.png
->>>>>>> f010a3a4937f5628cff96a657c493f900e7ec395
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
