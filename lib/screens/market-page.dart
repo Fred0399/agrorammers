@@ -17,6 +17,7 @@ class MarketPage extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
+        height: 250,
         child: Stack(
           alignment: Alignment.bottomRight,
           children: <Widget>[
