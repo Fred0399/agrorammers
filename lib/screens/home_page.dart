@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../blocs/login_provider.dart';
-import '../drawer.dart';
+import '../others/drawer.dart';
+import 'home.dart';
 
 class LoginPage extends StatefulWidget {
-  int choosedind=0;
-  String appBarTitle="Sahəm";
+  int choosedind = 0;
+  String appBarTitle = "Sahəm";
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -16,12 +17,12 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final bloc = LoginProvider.of(context);
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.appBarTitle),
       ),
-      drawer: DrawerPg(),
+      drawer: DrawerPg(logout: null),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -39,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   setState(() {
                     widget.choosedind = 0;
-                    widget.appBarTitle="Sahəm";
+                    widget.appBarTitle = "Sahəm";
                     _myPage.jumpToPage(0);
                   });
                 },
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                 color: (widget.choosedind == 1) ? Colors.green : null,
                 onPressed: () {
                   setState(() {
-                    widget.appBarTitle="Forum";
+                    widget.appBarTitle = "Forum";
                     widget.choosedind = 1;
                     _myPage.jumpToPage(1);
                   });
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 color: (widget.choosedind == 2) ? Colors.green : null,
                 onPressed: () {
                   setState(() {
-                    widget.appBarTitle="Sahəm";
+                    widget.appBarTitle = "Sahəm";
                     widget.choosedind = 2;
                     _myPage.jumpToPage(2);
                   });
@@ -78,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   bloc.sigInGoogle();
                   setState(() {
-                    widget.appBarTitle="Profil";
+                    widget.appBarTitle = "Profil";
                     widget.choosedind = 3;
                     _myPage.jumpToPage(3);
                   });
@@ -94,10 +95,10 @@ class _LoginPageState extends State<LoginPage> {
           print('Page Changes to index $int');
         },
         children: <Widget>[
-          Center(
-            child: Container(
-              child: Text('Empty Body 0'),
-            ),
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            child:Home(null),
           ),
           Center(
             child: Container(
@@ -157,6 +158,11 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     );
+  }
+
+  String _loggout(LoginBloc bloc) {
+    bloc.signOutGoogle();
+    return "outed";
   }
 
   Widget _buildSignOutBt(LoginBloc bloc) {
