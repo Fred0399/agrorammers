@@ -1,0 +1,93 @@
+import 'package:agrorammers/screens/insect_info_page.dart';
+import 'package:agrorammers/screens/insect_list_page.dart';
+import 'package:flutter/material.dart';
+
+class InsectItem extends StatelessWidget {
+  final String title;
+  final String imageFolder;
+  final String imageType;
+  final String pageInd;
+  String imagePath;
+
+  InsectItem({
+    @required this.title,
+    this.imageFolder = 'insect_items',
+    this.imageType = 'png',
+    this.pageInd = '0',
+  }) {
+    this.imagePath = 'assets/' + imageFolder + '/' + title + '.' + imageType;
+  }
+
+  void select(BuildContext ctx) {
+    if (pageInd == '0') {
+      Navigator.of(ctx).pushNamed(
+        InsectListPage.routeName,
+        arguments: {'plantName': title},
+      );
+    } else {
+      Navigator.of(ctx).pushNamed(
+        InsectInfoPage.routeName,
+        arguments: {
+          'InsectName': title,
+          'InsectParent': imageFolder,
+        },
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: InkWell(
+        onTap: () => select(context),
+        splashColor: Colors.red,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+            color: Colors.green,
+          ),
+          height: MediaQuery.of(context).size.height * 0.2,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                LimitedBox(
+                  maxWidth: MediaQuery.of(context).size.width * 0.4,
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: LimitedBox(
+                      maxWidth: MediaQuery.of(context).size.width * 0.30,
+                      maxHeight: MediaQuery.of(context).size.width * 0.30,
+                      child: Image(
+                        image: AssetImage(imagePath),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

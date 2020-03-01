@@ -3,8 +3,32 @@ import 'package:flutter/material.dart';
 
 import '../market_item.dart';
 
-var user = MarketUser(
-    email: 'man@mail.rus', name: 'John', plants: ['Pomidor', 'Xiyar', 'Yemiş']);
+var user = [
+  MarketUser(
+      imageUrl: '1',
+      email: 'man@mail.rus',
+      name: 'John',
+      id: '245',
+      plants: ['Sarımsaq', 'Xiyar', 'Yemiş']),
+  MarketUser(
+      imageUrl: '2',
+      email: 'man@mail.rus',
+      name: 'John',
+      id: '227',
+      plants: ['Yemiş', 'Pomidor', 'Xiyar']),
+  MarketUser(
+      imageUrl: '3',
+      email: 'man@mail.rus',
+      name: 'John',
+      id: '932',
+      plants: ['Xiyar', 'Yemiş', 'Sarımsaq']),
+  MarketUser(
+      imageUrl: '4',
+      email: 'man@mail.rus',
+      name: 'John',
+      id: '147',
+      plants: ['Soğan', 'Pomidor', 'Yemiş']),
+];
 
 class MarketPage extends StatelessWidget {
   static const routeName = 'MarketplacePage';
@@ -15,20 +39,9 @@ class MarketPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Bazar'),
       ),
-      body: Container(
-        child: MarketItem(user),
+      body: SingleChildScrollView(
+        child: Column(children: user.map((obj) => MarketItem(obj)).toList()),
       ),
     );
   }
 }
-
-// Container(
-//         height: 120.0,
-//         width: 120.0,
-//         decoration: new BoxDecoration(
-//           image: DecorationImage(
-//             image: new AssetImage('assets/catalog_items/Pomidor.png'),
-//             fit: BoxFit.cover,
-//           ),
-//           shape: BoxShape.circle,
-//         ),

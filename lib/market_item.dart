@@ -1,18 +1,21 @@
 import 'package:agrorammers/data/user.dart';
 import 'package:agrorammers/screens/market-page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class MarketItem extends StatelessWidget {
   String sellerName;
   String sellerMail;
-  String imageUrl;
+  String imageInd;
+  String id;
   List items;
 
   MarketItem(MarketUser user) {
     sellerName = user.name;
     sellerMail = user.email;
-    imageUrl = user.imageUrl;
+    imageInd = user.imageUrl;
     items = user.plants;
+    id = user.id;
   }
 
   @override
@@ -21,25 +24,20 @@ class MarketItem extends StatelessWidget {
       padding: EdgeInsets.all(5),
       height: MediaQuery.of(context).size.height * 0.23,
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         color: Colors.green,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: Center(
             child: Row(
               children: [
-                ClipRect(
-                  //borderRadius: BorderRadius.all(Radius.circular(20)),
-                  child: (imageUrl != null)
-                      ? Image.network(
-                          imageUrl,
-                          height: MediaQuery.of(context).size.height * 0.12,
-                          width: MediaQuery.of(context).size.height * 0.12,
-                        )
-                      : Image.asset(
-                          "assets/ui_icons/user.png",
-                          height: MediaQuery.of(context).size.height * 0.12,
-                          width: MediaQuery.of(context).size.height * 0.12,
-                        ),
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  child: Image.asset(
+                    "assets/old_men/" + imageInd + ".png",
+                    height: MediaQuery.of(context).size.height * 0.12,
+                    width: MediaQuery.of(context).size.height * 0.12,
+                  ),
                 ),
                 Expanded(
                   child: Column(
@@ -52,92 +50,101 @@ class MarketItem extends StatelessWidget {
                           Text(
                             'Id number',
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                           SizedBox(width: 20),
                           Text(
-                            '#236',
+                            '#' + id,
                             style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Stack(
-                            alignment: Alignment.bottomRight,
-                            children: <Widget>[
-                              Container(
-                                height: MediaQuery.of(context).size.height *
-                                    0.23 *
-                                    0.35,
-                                child: Image.asset(
-                                  'assets/catalog_items/Pomidor.png',
-                                  fit: BoxFit.fitHeight,
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Stack(
+                              alignment: Alignment.bottomRight,
+                              children: <Widget>[
+                                Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.23 *
+                                      0.35,
+                                  child: Image.asset(
+                                    'assets/catalog_items/' + items[0] + '.png',
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                height: MediaQuery.of(context).size.height *
-                                    0.23 *
-                                    0.5 *
-                                    0.4,
-                                child: Image.asset(
-                                  'assets/catalog_items/Pomidor.png',
-                                  fit: BoxFit.fitHeight,
+                                Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.23 *
+                                      0.5 *
+                                      0.4,
+                                  child: Image.asset(
+                                    'assets/ui_icons/fertilizer.png',
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Stack(
-                            alignment: Alignment.bottomRight,
-                            children: <Widget>[
-                              Container(
-                                height: MediaQuery.of(context).size.height *
-                                    0.23 *
-                                    0.35,
-                                child: Image.asset(
-                                  'assets/catalog_items/Pomidor.png',
-                                  fit: BoxFit.fitHeight,
+                              ],
+                            ),
+                            Stack(
+                              alignment: Alignment.bottomRight,
+                              children: <Widget>[
+                                Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.23 *
+                                      0.35,
+                                  child: Image.asset(
+                                    'assets/catalog_items/' + items[1] + '.png',
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                height: MediaQuery.of(context).size.height *
-                                    0.23 *
-                                    0.5 *
-                                    0.4,
-                                child: Image.asset(
-                                  'assets/catalog_items/Pomidor.png',
-                                  fit: BoxFit.fitHeight,
+                                Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.23 *
+                                      0.5 *
+                                      0.4,
+                                  child: Image.asset(
+                                    'assets/ui_icons/seeds.png',
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Stack(
-                            alignment: Alignment.bottomRight,
-                            children: <Widget>[
-                              Container(
-                                height: MediaQuery.of(context).size.height *
-                                    0.23 *
-                                    0.35,
-                                child: Image.asset(
-                                  'assets/catalog_items/Pomidor.png',
-                                  fit: BoxFit.fitHeight,
+                              ],
+                            ),
+                            Stack(
+                              alignment: Alignment.bottomRight,
+                              children: <Widget>[
+                                Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.23 *
+                                      0.35,
+                                  child: Image.asset(
+                                    'assets/catalog_items/' + items[2] + '.png',
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                height: MediaQuery.of(context).size.height *
-                                    0.23 *
-                                    0.5 *
-                                    0.4,
-                                child: Image.asset(
-                                  'assets/catalog_items/Pomidor.png',
-                                  fit: BoxFit.fitHeight,
+                                Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.23 *
+                                      0.5 *
+                                      0.4,
+                                  child: Image.asset(
+                                    'assets/ui_icons/seeds.png',
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
