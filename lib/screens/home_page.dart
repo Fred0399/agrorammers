@@ -1,3 +1,4 @@
+import 'package:agrorammers/data/plant_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../blocs/login_provider.dart';
@@ -7,6 +8,25 @@ import 'home.dart';
 class LoginPage extends StatefulWidget {
   int choosedind = 0;
   String appBarTitle = "Sahəm";
+  List<PlantData> list = [
+    PlantData(
+      id: 123123,
+      title: "Pomidor",
+      image: Image.asset('assets/catalog_items/tomato.png'),
+      tasks: [
+        TaskCare(isDone: 0, note: "5 gunden 1 sula"),
+      ],
+    ),
+    PlantData(
+      id: 123123,
+      title: "Pomidor",
+      image: Image.asset('assets/catalog_items/tomato.png'),
+      tasks: [
+        TaskCare(isDone: 0, note: "5 gunden 1 sula"),
+      ],
+    )
+  ];
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -95,11 +115,18 @@ class _LoginPageState extends State<LoginPage> {
           print('Page Changes to index $int');
         },
         children: <Widget>[
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            child:Home(null),
-          ),
+          (widget.list != null && widget.list.length > 0)
+              ? Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+                  child: Home(widget.list),
+                )
+              : Center(
+                  child: Container(
+                    child: Text("Bitki əlavə edilməyib!"),
+                  ),
+                ),
           Center(
             child: Container(
               child: Text('Empty Body 1'),

@@ -1,4 +1,5 @@
-import 'dart:ui';
+
+import 'package:flutter/material.dart';
 
 class PlantData{
   final int id;
@@ -11,8 +12,8 @@ class PlantData{
 class TaskCare{
   final int isDone;//0 means it is not done yet, 1 means it is.
   final String note;
-  final String time_data;
+  final String timeData;
 
-  TaskCare({this.isDone=0,this.note,this.time_data});
+  TaskCare({this.isDone=0,this.note,this.timeData});
 
 }
