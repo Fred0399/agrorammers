@@ -86,7 +86,7 @@ class _ForumHomeState extends State<ForumHome> {
   Widget form(Forum forum, Size screenSize) {
     return GestureDetector(
       onTap: () {
-        forum.userID=widget.user.id;
+        forum.userID = widget.user.id;
         Navigator.of(context).pushNamed(
           ForumFull.routeName,
           arguments: forum,
@@ -134,6 +134,7 @@ class _ForumHomeState extends State<ForumHome> {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                     Text(
                       forum.body,

@@ -12,17 +12,29 @@ class LoginBloc {
   // StreamController
   final BehaviorSubject<GoogleSignInAccount> _google =
       BehaviorSubject<GoogleSignInAccount>();
-  final BehaviorSubject<Map<String,dynamic>> _userInfos =
-      BehaviorSubject<Map<String,dynamic>>();
+  final BehaviorSubject<Map<String, dynamic>> _userInfos =
+      BehaviorSubject<Map<String, dynamic>>();
 
   // Streams
   Stream<GoogleSignInAccount> get googleAccount => _google.stream;
-  Stream<Map<String,dynamic>> get userAccount => _userInfos.stream;
+  Stream<Map<String, dynamic>> get userAccount => _userInfos.stream;
 
   sigInGoogle() async {
     _googleSignIn.signIn().then((GoogleSignInAccount account) async {
       //_google.sink.add(account);
-      final response = await http.post(loginApi, body: {'name':account.displayName,'email':account.email,'social_id':account.id,'picture_url':account.photoUrl,});
+      print(account);
+      final response = await http.post(
+        loginApi,
+        body: {
+          'name': account.displayName,
+          'email': account.email,
+          'social_id': account.id,
+          'picture_url': (account.photoUrl == null)
+              ? "https://drive.google.com/open?id=1boFUe-PxfFxxFsLc52vdH-JzraOdet-Z"
+              : account.photoUrl,
+        },
+      );
+      print("DONE");
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       if (extractedData == null) {
         return null;

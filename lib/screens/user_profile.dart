@@ -1,9 +1,11 @@
+import 'package:agrorammers/blocs/login_bloc.dart';
 import 'package:agrorammers/data/user.dart';
 import 'package:flutter/material.dart';
 
 class UserProfile extends StatefulWidget {
   User userData;
-  UserProfile({this.userData});
+  final bloc;
+  UserProfile({this.userData,this.bloc});
   @override
   _UserProfileState createState() => _UserProfileState();
 }
@@ -81,6 +83,13 @@ class _UserProfileState extends State<UserProfile> {
                                 height: screenSize.height * 0.125,
                                 width: screenSize.height * 0.125,
                               ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.exit_to_app),
+                        color: Theme.of(context).primaryColor,
+                        onPressed: () {
+                          LoginBloc().signOutGoogle();
+                        },
                       ),
                     ],
                   ),
