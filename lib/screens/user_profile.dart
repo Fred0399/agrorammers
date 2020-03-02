@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 
 class UserProfile extends StatefulWidget {
   User userData;
-  final bloc;
-  UserProfile({this.userData,this.bloc});
+
+  UserProfile({this.userData});
   @override
   _UserProfileState createState() => _UserProfileState();
 }
 
 class _UserProfileState extends State<UserProfile> {
+  final bloc = LoginBloc();
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
@@ -48,7 +49,10 @@ class _UserProfileState extends State<UserProfile> {
                               "İstifadəçi:",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            Text(widget.userData.name)
+                            LimitedBox(
+                                maxWidth:
+                                    MediaQuery.of(context).size.width * 0.4,
+                                child: Text(widget.userData.name)),
                           ],
                         ),
                         SizedBox(
@@ -61,7 +65,10 @@ class _UserProfileState extends State<UserProfile> {
                             ),
                             Text("Email:",
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            Text(widget.userData.email)
+                            LimitedBox(
+                              maxWidth: MediaQuery.of(context).size.width * 0.4,
+                              child: Text(widget.userData.email),
+                            ),
                           ],
                         )
                       ],
@@ -88,7 +95,9 @@ class _UserProfileState extends State<UserProfile> {
                         icon: Icon(Icons.exit_to_app),
                         color: Theme.of(context).primaryColor,
                         onPressed: () {
-                          LoginBloc().signOutGoogle();
+                          bloc.signOutGoogle();
+                          Navigator.of(context).pushNamed("/");
+                          widget.userData=null;
                         },
                       ),
                     ],

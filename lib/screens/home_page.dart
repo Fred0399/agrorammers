@@ -18,7 +18,6 @@ class LoginPage extends StatefulWidget {
   User loggedUser;
 
   List<PlantData> list;
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }

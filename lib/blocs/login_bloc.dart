@@ -22,7 +22,6 @@ class LoginBloc {
   sigInGoogle() async {
     _googleSignIn.signIn().then((GoogleSignInAccount account) async {
       //_google.sink.add(account);
-      print(account);
       final response = await http.post(
         loginApi,
         body: {
@@ -34,7 +33,6 @@ class LoginBloc {
               : account.photoUrl,
         },
       );
-      print("DONE");
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       if (extractedData == null) {
         return null;
