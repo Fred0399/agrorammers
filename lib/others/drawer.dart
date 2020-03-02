@@ -104,13 +104,6 @@ class DrawerPg extends StatelessWidget {
               },
             ),
             drawDesign(
-              content: "Bazar",
-              pressFunc: () {
-                // Navigator.of(context).pop();
-                Navigator.of(context).pushNamed(MarketPage.routeName);
-              },
-            ),
-            drawDesign(
               content: "Çıxış",
               pressFunc: () => logout,
             ),

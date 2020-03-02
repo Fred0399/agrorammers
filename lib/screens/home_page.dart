@@ -1,6 +1,7 @@
 import 'package:agrorammers/blocs/user_plants.dart';
 import 'package:agrorammers/data/plant_data.dart';
 import 'package:agrorammers/data/user.dart';
+import 'package:agrorammers/screens/market-page.dart';
 import 'package:agrorammers/screens/pop_up.dart';
 import 'package:agrorammers/screens/user_profile.dart';
 import 'package:agrorammers/widgets/my_plant.dart';
@@ -135,9 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
           Center(
-            child: Container(
-              child: Text("Məlumat yoxdur!"),
-            ),
+            child: MarketPage(),
           ),
           (widget.loggedUser == null)
               ? StreamBuilder(

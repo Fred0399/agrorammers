@@ -35,13 +35,8 @@ class MarketPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Bazar'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(children: user.map((obj) => MarketItem(obj)).toList()),
-      ),
+    return SingleChildScrollView(
+      child: Column(children: user.map((obj) => MarketItem(obj)).toList()),
     );
   }
 }
