@@ -66,6 +66,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(20)),

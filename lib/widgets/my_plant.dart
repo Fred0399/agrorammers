@@ -28,13 +28,13 @@ class _MyPlantState extends State<MyPlant> {
       widget.valCheck = true;
     }
     return Container(
-      height: screenSz.height * 0.06,
+      height: screenSz.height * 0.08,
       width: screenSz.width * 0.85,
       margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(task.note),
+          LimitedBox(maxWidth: screenSz.width * 0.60, child: Text(task.note)),
           Checkbox(
             value: widget.valCheck,
             onChanged: (bool val) {
@@ -59,7 +59,7 @@ class _MyPlantState extends State<MyPlant> {
     final Size screenSize = MediaQuery.of(context).size;
     return Container(
       width: screenSize.width * 0.85,
-      height: screenSize.height * 0.25,
+      height: screenSize.height * 0.40,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -80,17 +80,15 @@ class _MyPlantState extends State<MyPlant> {
                   Container(
                     width: screenSize.width * 0.23,
                     height: screenSize.height * 0.10,
-                    padding: EdgeInsets.all(12),
+                    padding: EdgeInsets.all(5),
                     child: Center(
                       child: Container(
-                        width: screenSize.width * 0.20,
-                        height: screenSize.height * 0.7,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: (widget.plantData.imageUrl != null)
-                              ? Image.network(widget.plantData.imageUrl)
-                              : null,
-                        ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: (widget.plantData.imageUrl != null)
+                                ? Image.network(widget.plantData.imageUrl)
+                                : null,
+                          ),
                       ),
                     ),
                   ),
@@ -141,7 +139,7 @@ class _MyPlantState extends State<MyPlant> {
           Divider(),
           Container(
             width: screenSize.width * 0.85,
-            height: screenSize.height * 0.12,
+            height: screenSize.height * 0.26,
             child: ListView.builder(
               itemBuilder: (BuildContext ctx, int index) {
                 return task(ctx, screenSize, widget.plantData.tasks[index]);
