@@ -75,7 +75,7 @@ class _MyPlantState extends State<MyPlant> {
               height: screenSize.height * 0.10,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     width: screenSize.width * 0.23,
@@ -83,12 +83,12 @@ class _MyPlantState extends State<MyPlant> {
                     padding: EdgeInsets.all(5),
                     child: Center(
                       child: Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: (widget.plantData.imageUrl != null)
-                                ? Image.network(widget.plantData.imageUrl)
-                                : null,
-                          ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: (widget.plantData.imageUrl != null)
+                              ? Image.network(widget.plantData.imageUrl)
+                              : null,
+                        ),
                       ),
                     ),
                   ),
@@ -96,7 +96,7 @@ class _MyPlantState extends State<MyPlant> {
                     width: 10,
                   ),
                   Container(
-                    width: screenSize.width * 0.25,
+                    width: screenSize.width * 0.20,
                     height: screenSize.height * 0.10,
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -118,7 +118,30 @@ class _MyPlantState extends State<MyPlant> {
                   ),
                   Container(
                     height: screenSize.height * 0.10,
-                    width: screenSize.width * 0.30,
+                    width: screenSize.width * 0.15,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: widget.plantData.members.map((val) {
+                          return Container(
+                            width: screenSize.height * 0.05,
+                            height: screenSize.height * 0.05,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: new DecorationImage(
+                                image: new NetworkImage(
+                                  val.imageUrl,
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: screenSize.height * 0.10,
+                    width: screenSize.width * 0.20,
                     alignment: Alignment.centerRight,
                     child: IconButton(
                       icon: Image.asset(
