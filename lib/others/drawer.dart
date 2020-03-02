@@ -1,4 +1,5 @@
 import 'package:agrorammers/screens/catalog_page.dart';
+import 'package:agrorammers/screens/insect_page.dart';
 import 'package:agrorammers/screens/market-page.dart';
 import 'package:flutter/material.dart';
 
@@ -89,17 +90,17 @@ class DrawerPg extends StatelessWidget {
                   Navigator.of(context).pushReplacementNamed("/");
                 }),
             drawDesign(
-              content: "Kataloq",
+              content: "Xəstəliklər",
               pressFunc: () {
                 // Navigator.of(context).pop();
                 Navigator.of(context).pushNamed(CatalogPage.routeName);
               },
             ),
             drawDesign(
-              content: "Bazar",
+              content: "Həşaratlar",
               pressFunc: () {
                 // Navigator.of(context).pop();
-                Navigator.of(context).pushNamed(MarketPage.routeName);
+                Navigator.of(context).pushNamed(InsectPage.routeName);
               },
             ),
             drawDesign(

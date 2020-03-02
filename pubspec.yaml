@@ -51,6 +51,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+   - assets/old_men/1.png
+   - assets/old_men/2.png
+   - assets/old_men/3.png
+   - assets/old_men/4.png
+   - assets/old_men/5.png
+   - assets/old_men/6.png
 
    - assets/catalog_items/Kök.png
    - assets/catalog_items/Xiyar.png
@@ -120,6 +126,52 @@ flutter:
 
    - assets/ui_icons/add_user.png
    - assets/ui_icons/user.png
+   - assets/ui_icons/fertilizer.png
+   - assets/ui_icons/seeds.png
+
+
+   - assets/insect_items/Kök.png
+   - assets/insect_items/Xiyar.png
+   - assets/insect_items/Sarımsaq.png
+   - assets/insect_items/Yemiş.png
+   - assets/insect_items/Soğan.png
+   - assets/insect_items/Pomidor.png
+
+
+   - assets/insects/Xiyar/Danadişi.jpg
+   - assets/insects/Xiyar/Mənənələr.jpg
+   - assets/insects/Xiyar/Xiyar milçəyi.jpg
+   - assets/insects/Xiyar/Tor gənəsi.jpg
+   - assets/insects/Xiyar/Ağqanadlılar.jpg
+
+   - assets/insects/Pomidor/Danadişi.jpg
+   - assets/insects/Pomidor/Mənənələr.jpg
+   - assets/insects/Pomidor/Tripslər.jpg
+   - assets/insects/Pomidor/Gənələr.jpg
+   - assets/insects/Pomidor/Məftil qurdu.jpg
+
+
+   - assets/insects/Soğan/Tütün tripsi.jpg
+   - assets/insects/Soğan/Soğanın kök gənəsi.jpg
+   - assets/insects/Soğan/Soğan milçəyi.jpg
+   - assets/insects/Soğan/Soğan güvəsi.jpg
+   - assets/insects/Soğan/Soğanın gövdə nematodu.jpg
+
+
+   - assets/insects/Yemiş/Gəmirici sovka.jpg
+   - assets/insects/Yemiş/Məftil qurdları.jpg
+   - assets/insects/Yemiş/Tor gənəciyi.jpg
+   - assets/insects/Yemiş/Bostan mənənəsi.jpg
+   - assets/insects/Yemiş/Yemiş milçəyi.jpg
+
+   - assets/insects/Kök/Yerkökü uzunburunu.jpg
+   - assets/insects/Kök/Yerkökü milçəyi.jpg
+   - assets/insects/Kök/Çətirçiçək güvəsi.jpg
+
+   - assets/insects/Sarımsaq/Tütün tripsi.jpg
+   - assets/insects/Sarımsaq/Soğan milçəyi.jpg
+   - assets/insects/Sarımsaq/Soğan güvəsi.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
